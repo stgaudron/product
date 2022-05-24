@@ -1,0 +1,11 @@
+{
+  "name": "product-interfaces",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc --build tsconfig.build.json"
+  },
+  "author": "",
+  "license": "ISC"
+}
