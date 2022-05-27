@@ -8,6 +8,8 @@ Vue.config.productionTip = false;
 Vue.use(VueCompositionApi);
 
 new Vue({
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   router,
   store,
   render: (h) => h(App),

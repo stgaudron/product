@@ -104,7 +104,6 @@ export class RestProductController implements ProductController {
     reply: ResponseToolkit
   ): Promise<ResponseObject> {
     try {
-
       const products = await this.searchProductUseCase(
         convertSearchQueryParamsToSearchParams(request.query)
       );

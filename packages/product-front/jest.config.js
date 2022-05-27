@@ -4,9 +4,8 @@ module.exports = {
     // ...
     ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$":
       "jest-transform-stub",
-    "^.+\\.svg$": "<rootDir>/svgTransform.js",
   },
-  moduleFileExtensions: ["js", "json", "vue"],
+  moduleFileExtensions: ["js", "json", "vue", "ts"],
   moduleNameMapper: {
     "^@/(.*)$": "product-front/src/$1",
   },

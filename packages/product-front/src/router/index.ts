@@ -1,8 +1,8 @@
 import Vue from "vue";
-import VueRouter, { RouteConfig } from "vue-router";
+import Router, { RouteConfig } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 
-Vue.use(VueRouter);
+Vue.use(Router);
 
 const routes: Array<RouteConfig> = [
   {
@@ -21,7 +21,7 @@ const routes: Array<RouteConfig> = [
   },
 ];
 
-const router = new VueRouter({
+const router = new Router({
   routes,
 });
 
