@@ -6,7 +6,6 @@
   "compilerOptions": {
      "sourceMap": false,
      "inlineSourceMap": false,
-     "rootDir": "src",
      "outDir": "/dist",
      "strict": true,
      "lib": ["esnext"],

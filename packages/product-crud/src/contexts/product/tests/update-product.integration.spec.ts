@@ -23,13 +23,13 @@ describe("INTEGRATION | UPDATE PRODUCT API", function () {
       describe("/v1/product/reference", function () {
           const path = `/v1/product/${reference}`
         describe("si la référence produit existe", function () {
-          it("renvoie une 201 et le produit est retourné", async function () {
+          it("renvoie une 200 et le produit est retourné", async function () {
             await productDatabaseApi.createProduct(productRaw)
             product.name = "LAND SPEEDER"
             await request(this.server.hapiServer.listener)
               .put(path)
               .send(product)
-              .expect(201, product);
+              .expect(200, product);
           });
         });
         describe("si la référence produit n'existe pas existe", function () {

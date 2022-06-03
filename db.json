@@ -1,0 +1,42 @@
+{
+    "products": [
+        {
+            "reference": "09123",
+            "name": "MOCKED X WING",
+            "sellerId": "Amazon",
+            "price": "100",
+            "kinds": "starwars",
+            "weight": "400",
+            "dimensions": {
+                "height": "40",
+                "width": "8",
+                "length": "50"
+            }
+        },
+        {
+          "reference": "09124",
+          "name": "MOCKED TIE FIGHTER",
+          "sellerId": "Amazon",
+          "price": "80",
+          "kinds": "starwars",
+          "weight": "350",
+          "dimensions": {
+            "height": "40",
+            "width": "6",
+            "length": "40"
+          }
+        },{
+          "reference": "09125",
+          "name": "MOCKED AVENGERS HQ",
+          "sellerId": "Amazon",
+          "price": "150",
+          "kinds": "marvel",
+          "weight": "500",
+          "dimensions": {
+            "height": "60",
+            "width": "10",
+            "length": "70"
+          }
+        }
+    ]
+}

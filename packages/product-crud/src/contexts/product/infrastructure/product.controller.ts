@@ -84,7 +84,7 @@ export class RestProductController implements ProductController {
       if (result instanceof ProductDomainException) {
         throw Boom.badRequest(result.message);
       } else {
-        return reply.response(result).code(201);
+        return reply.response(result).code(200);
       }
     } catch (e) {
       throw Boom.badRequest();
@@ -104,14 +104,15 @@ export class RestProductController implements ProductController {
     reply: ResponseToolkit
   ): Promise<ResponseObject> {
     try {
+      //tu utilises pas ton exception :) manque ==> test + impl
       const products = await this.searchProductUseCase(
         convertSearchQueryParamsToSearchParams(request.query)
       );
+
       
       return reply.response(products).code(200);
     } catch(e) {
-      console.log(e)
-      return reply.response()
+      throw Boom.badRequest()
     }
   }
 }

@@ -11,7 +11,8 @@ describe("INTEGRATION | PRODUCT API", function () {
   const productDatabaseApi = new ProductDatabaseApi(database);
 
   describe("CREATE", function () {
-    describe("/v1/product", function () {
+    //en REST une ressource est au pluriel ==> /v1/products :)
+    describe("/v1/products", function () {
       let path: string;
       let product: ProductEntity
       let productRaw: ProductRaw

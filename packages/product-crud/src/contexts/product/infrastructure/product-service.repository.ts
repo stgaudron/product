@@ -27,6 +27,7 @@ export class ProductServiceRepository implements ProductRepository {
     return productRaw ? createEntityFromProductRaw(productRaw) : null
   }
 
+  //tu peux simplifier en supprimant reference dans les arguments
   async updateProduct(reference: string, productEntity: ProductEntity): Promise<ProductEntity> {
     const updatedProduct = await this.datasource.updateProduct(reference, createProductRawFromEntity(productEntity))
     return updatedProduct ? createEntityFromProductRaw(updatedProduct): productEntity

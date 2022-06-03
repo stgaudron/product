@@ -1,15 +1,27 @@
 <script lang="ts">
 import Vue from "vue";
+import { onMounted } from "@vue/composition-api";
 import { useState } from "@/composables/state";
 import AdnToggle from "@/composables/AdnToggle.vue";
+import { useTheme } from "@/composables/useTheme";
 
 export default Vue.extend({
   setup() {
     const [msg, setMsg] = useState("UNIVERS");
+    let theme = "";
+    const eventBus = new Vue();
 
+    onMounted(() => {
+      const { currentTheme } = useTheme();
+      theme = currentTheme.value;
+      eventBus.$on("click", (payload: string) => {
+        theme = payload;
+      });
+    });
     return {
       msg,
       setMsg,
+      theme,
     };
   },
   components: {
@@ -19,7 +31,7 @@ export default Vue.extend({
 </script>
 
 <template>
-  <div>
+  <div class="container" v-bind:class="{ theme }">
     <nav class="header-nav" role="navigation">
       <ul class="menu">
         <li><a href="/home">HOME</a></li>
@@ -28,7 +40,11 @@ export default Vue.extend({
         </li>
         <li>
           <div class="toggle-container">
-            <adn-toggle class="toggle" :checked="false"></adn-toggle>
+            <adn-toggle
+              class="toggle"
+              :checked="false"
+              @click="useTheme"
+            ></adn-toggle>
           </div>
         </li>
       </ul>
@@ -38,10 +54,13 @@ export default Vue.extend({
 </template>
 
 <style lang="scss" scoped>
+.container {
+  display: block;
+  background-color: var(--primary);
+}
 ul {
   margin: 0px;
   padding: 0px;
-  background: #444f6d;
   list-style: none;
 }
 a {
@@ -56,9 +75,10 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: #19252f;
 }
 .toggle {
-  color: #edf1fc;
+  color: var(--text-primary-color);
 }
 .toggle-container {
   display: flex;

@@ -111,26 +111,29 @@ describe("INTEGRATION | PRODUCT DATASOURCE", function () {
   describe("#updateProduct", function () {
     describe("A la modification d un produit", function () {
       it("Le produit est modifié en base", async function () {
-        const product = generateRawProduct();
+        const product = generateRawProduct({ name: "BOUZIN DE L'ESPACE" });
         await productDatasource.createProduct(product);
-        product.name = "MILLENIUM FALCON";
+        
+        //plutot que de la réaffectation, génère un nouveau produit ==> const productToUpdate = {...product, name: "MILLENIUM FALCON"}
+        const productToUpdate = generateRawProduct({ name: "MILLENIUM FALCON"});
 
-        await productDatasource.updateProduct(product.reference, product);
+        await productDatasource.updateProduct(product.reference, productToUpdate);
 
         expect(
           convertPrismaProductToProductRaw(
             await database.client.product.findUnique({
               where: {
-                reference: product.reference,
+                reference: productToUpdate.reference,
               },
             })
           )
-        ).to.deep.equal(product);
+        ).to.deep.equal(productToUpdate);
       });
 
       it("Le produit est retourné", async function () {
         const product = generateRawProduct();
         await productDatasource.createProduct(product);
+        //idem
         product.name = "X WING";
 
         const updatedProduct = await productDatasource.updateProduct(
@@ -151,6 +154,7 @@ describe("INTEGRATION | PRODUCT DATASOURCE", function () {
         });
 
         await productDatasource.createProduct(product);
+        //idem
         product.name = "B WING";
 
         await productDatasource.updateProduct(product.reference, product);
